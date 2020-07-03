@@ -5,6 +5,8 @@ import Nav from "./components/Nav";
 import Search from "./pages/search";
 import Saved from "./pages/saved";
 
+const NoMatchRoute = () => <div>404 Page</div>;
+
 function App() {
   return (
 		<Router>
@@ -17,6 +19,7 @@ function App() {
 				<Route exact path={"/saved"}>
 					<Saved />
 				</Route>
+				<Route component={NoMatchRoute} />
 			</Switch>
     </div>
 		</Router>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import BookSearchForm from '../components/BookSearchForm';
 import Loader from '../components/Loader';
-// import BooksList from '../components/BooksList';
+import BooksList from '../components/BooksList';
 // import './App.css';
 
 function Search() {
@@ -96,7 +96,8 @@ function Search() {
 					fetching books for "<strong>{searchTerm}</strong>"
 				</div>
 			)} */}
-			<ul>
+			<BooksList books={books} />
+			{/* <ul>
 				{books.items.map((book, index) => {
 					return (
 						<li key={index}>
@@ -118,7 +119,7 @@ function Search() {
 						</li>
 					);
 				})}
-			</ul>
+			</ul> */}
 		</div>
 	);
 }
