@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import BookSearchForm from '../components/BookSearchForm';
+import BookSearchForm from '../components/BookSearchForm';
 import Loader from '../components/Loader';
 // import BooksList from '../components/BooksList';
 // import './App.css';
@@ -66,7 +66,13 @@ function Search() {
     />
     <Loader searchTerm={searchTerm} loading={loading} />
     <BooksList books={books} /> */}
-			<form onSubmit={onSubmitHandler}>
+			<BookSearchForm
+      onSubmitHandler={onSubmitHandler}
+      onInputChange={onInputChange}
+      searchTerm={searchTerm}
+      error={error}
+    />
+		{/* <form onSubmit={onSubmitHandler}>
 				<label>
 					<span>Search for a book </span>
 					<input
@@ -83,7 +89,7 @@ function Search() {
 						some error occurred, while fetching api
 					</div>
 				)}
-			</form> 
+			</form>  */}
 			<Loader searchTerm={searchTerm} loading={loading}/>
 			{/* {loading && (
 				<div style={{ color: `green` }}>
