@@ -58,69 +58,15 @@ function Search() {
 
 	return (
 		<div>
-			{/* <BookSearchForm
-      onSubmitHandler={onSubmitHandler}
-      onInputChange={onInputChange}
-      searchTerm={searchTerm}
-      error={error}
-    />
-    <Loader searchTerm={searchTerm} loading={loading} />
-    <BooksList books={books} /> */}
 			<BookSearchForm
       onSubmitHandler={onSubmitHandler}
       onInputChange={onInputChange}
       searchTerm={searchTerm}
       error={error}
     />
-		{/* <form onSubmit={onSubmitHandler}>
-				<label>
-					<span>Search for a book </span>
-					<input
-						type="search"
-						placeholder="microservice, restful design, etc.,"
-						value={searchTerm}
-						onChange={onInputChange}
-						required
-					/>
-					<button type="submit">Search</button>
-				</label>
-				{error && (
-					<div style={{ color: `red` }}>
-						some error occurred, while fetching api
-					</div>
-				)}
-			</form>  */}
 			<Loader searchTerm={searchTerm} loading={loading}/>
-			{/* {loading && (
-				<div style={{ color: `green` }}>
-					fetching books for "<strong>{searchTerm}</strong>"
-				</div>
-			)} */}
 			<BooksList books={books} />
-			{/* <ul>
-				{books.items.map((book, index) => {
-					return (
-						<li key={index}>
-							<div>
-								<img
-									alt={`${book.volumeInfo.title} book`}
-									src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`}
-								/>
-								<div>
-									<h3>{book.volumeInfo.title}</h3>
-									<p>{bookAuthors(book.volumeInfo.authors)}</p>
-									<p>{book.volumeInfo.publishedDate}</p>
-									<p>{book.volumeInfo.description}</p>
-									<p>{book.volumeInfo.infoLink}</p>
-									<p>{book.id}</p>
-								</div>
-							</div>
-							<hr />
-						</li>
-					);
-				})}
-			</ul> */}
-		</div>
+			</div>
 	);
 }
 
