@@ -10,27 +10,28 @@ function Search() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
+	
 	const onInputChange = (e) => {
 		setSearchTerm(e.target.value);
 	};
 
 	let API_URL = `https://www.googleapis.com/books/v1/volumes`;
 
-	const bookAuthors = (authors) => {
-		if (authors) {
-			if (authors.length <= 2) {
-				authors = authors.join(" and ");
-			} else if (authors.length > 2) {
-				let lastAuthor = " and " + authors.slice(-1);
-				authors.pop();
-				authors = authors.join(", ");
-				authors += lastAuthor;
-			}
-		} else {
-			authors = "Author Unavailable";
-		}
-		return authors;
-	};
+	// const bookAuthors = (authors) => {
+	// 	if (authors) {
+	// 		if (authors.length <= 2) {
+	// 			authors = authors.join(" and ");
+	// 		} else if (authors.length > 2) {
+	// 			let lastAuthor = " and " + authors.slice(-1);
+	// 			authors.pop();
+	// 			authors = authors.join(", ");
+	// 			authors += lastAuthor;
+	// 		}
+	// 	} else {
+	// 		authors = "Author Unavailable";
+	// 	}
+	// 	return authors;
+	// };
 
 	const fetchBooks = async () => {
 		// set loading Before API operation starts
