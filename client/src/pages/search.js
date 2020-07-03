@@ -91,6 +91,9 @@ function Search() {
 									<h3>{book.volumeInfo.title}</h3>
 									<p>{bookAuthors(book.volumeInfo.authors)}</p>
 									<p>{book.volumeInfo.publishedDate}</p>
+									<p>{book.volumeInfo.description}</p>
+									<p>{book.volumeInfo.infoLink}</p>
+									<p>{book.id}</p>
 								</div>
 							</div>
 							<hr />
