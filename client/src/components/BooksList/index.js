@@ -23,8 +23,18 @@ const Book = ({ book }) => {
 		<div>
 			<div className='row' key={book.id}>
 				<div className='col'>{book.volumeInfo.title}
-					<button onClick{...() => book.saveBook(book.id)} className='save'>Save</button>
-					<button onClick{...() => book.viewBook(book.id)} className='view'>View</button>
+					<button>
+						<a className=" btn save" href={book.volumeInfo.infoLink} target="_blank">
+							Save
+						</a>
+						 {/* onClick{...() => book.saveBook(book.id)} className='save'>Save */}
+					</button>
+					{/* <button onClick{...() => book.viewBook(book.id)} className='view'>View</button> */}
+					<button>
+						<a className="btn view" href={book.volumeInfo.infoLink} target="_blank">
+							Link
+						</a>
+					</button>
 				</div>
 			</div>
 			<div className='row'>

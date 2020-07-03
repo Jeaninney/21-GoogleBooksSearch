@@ -2,12 +2,12 @@
 	text-align: left;
 }
 
-button.view {
+button {
 	float: right;
+	text-decoration: none;
+	color: black;
 }
-button.save {
-	float: right;
-}
+
 img {
 	float:left;
 }
