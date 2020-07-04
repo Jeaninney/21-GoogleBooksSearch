@@ -1,5 +1,11 @@
 import React from 'react';
+import API from "../../utils/API";
+// import API from "../utils/API";
 import './style.css';
+
+const imageurlA = "https://books.google.com/books/content?id=";
+const imageurlB = "&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"
+const linkurl = "https://www.google.com/books/edition/_/"
 
 // Separate the UI specific transforming logic to utils folder
 //import { bookAuthors } from '../utils';
@@ -18,21 +24,52 @@ const bookAuthors = (authors) => {
     }
     return authors;
 }
+
+ function handleSave({book}) {
+	// event.preventDefault();
+	// console.log(book);
+	// if (book.volumeInfo.title && book.volumeInfo.author) {
+		// console.log(event);
+		// console.log(book.id);
+		// console.log(book.volumeInfo.title);
+		// console.log(bookAuthors(book.volumeInfo.authors));
+		// console.log(urlA + book.id + urlB);
+		// console.log(book.volumeInfo.infoLink);
+		// console.log("-----------------------");
+
+		// API.saveBook({
+		// 	id: event,
+		// 	// title: book.volumeInfo.title,
+		// 	// authors: bookAuthors(book.volumeInfo.authors),
+		// 	// description: book.volumeInfo.description,
+		// 	// image: urlA + book.id + urlB,
+		// 	// link: book.volumeInfo.infoLink
+
+		// // })
+		// .then(console.log("then in HandleSave"))
+		// 	// .then(res => loadBooks())
+		// 	.catch(err => console.log(err));
+	// }
+};
+
 const Book = ({ book }) => {
   return (
 		<div>
 			<div className='row' key={book.id}>
 				<div className='col'>{book.volumeInfo.title}
-					<button>
-						<a className=" btn save" href={book.volumeInfo.infoLink} target="_blank">
+				<button onClick={handleSave({book})} className="save">Save</button>
+				{/* <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+      {props.children}
+    </button> */}
+						{/* <a className=" btn save" href={book.volumeInfo.infoLink} target="_blank">
 							Save
 						</a>
 						 {/* onClick{...() => book.saveBook(book.id)} className='save'>Save */}
-					</button>
+					{/* </button> */}
 					{/* <button onClick{...() => book.viewBook(book.id)} className='view'>View</button> */}
 					<button>
-						<a className="btn view" href={book.volumeInfo.infoLink} target="_blank">
-							Link
+						<a className="btn view" href={linkurl + book.id} target="_blank">
+							View
 						</a>
 					</button>
 				</div>
@@ -46,7 +83,7 @@ const Book = ({ book }) => {
 			<div className='row'>
 				<div className='col img-fluid'>
 					<img alt={`${book.volumeInfo.title} book`}
-					src={`https://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api`} />
+					src={imageurlA + book.id + imageurlB} />
 					<span className="text">{book.volumeInfo.description}</span>
 				</div>
 			</div>

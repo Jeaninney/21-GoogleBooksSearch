@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
+	dbid: {
+    type: String,
+    trim: true
+  },
   title: {
     type: String,
     trim: true
