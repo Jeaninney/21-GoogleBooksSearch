@@ -10,13 +10,14 @@ mongoose.connect(
 
 const bookSeed = [
   {
-		dbid: "uKZJDwAAQBAJ",
-    title: "Jurassic Park: The Deluxe Novelization (Jurassic Park)",
+		title: "Jurassic Park: The Deluxe Novelization (Jurassic Park)",
     author: [
 			"Gail Herman"
 			],
     description:
 		"Dinosaurs walk the earth once again in this story of adventure and danger.",
+		image: "http://books.google.com/books/content?id=uKZJDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73FBLxI92131qEjKorGfzO96T3o6pHOpIW6YQsdHPy-zftyIP6PDrpsls8Ejslo-VsdIE7P0uqnhO3ZkgBQiX6tc9AVz2ysLiVfWt1uVeFvH_RwRAivyvBoHyq2zEPNm3uORkzE&source=gbs_api",
+		link: "https://play.google.com/store/books/details?id=uKZJDwAAQBAJ"
   },
 ];
 

@@ -6,10 +6,6 @@ router.route("/")
   .get(booksController.findAll)
 	.post(booksController.create);
 	
-router.route("/books")
-  .get(booksController.findAll)
-  .post(booksController.create);
-
 // Matches with "/api/books/:id"
 router.route("/:id")
 // router.route("/books/:id")
@@ -19,7 +15,6 @@ router.route("/:id")
 	
 // Loads index.html if no route is hit
 router.route("*")
-  .get(booksController.findAll)
-	.post(booksController.create);
+  .get(booksController.findAll);
 
 module.exports = router;

@@ -25,9 +25,9 @@ const bookAuthors = (authors) => {
     return authors;
 }
 
- function handleSave({book}) {
-	// event.preventDefault();
-	// console.log(book);
+ function handleSave(book) {
+	 	// event.preventDefault();
+	console.log(book);
 	// if (book.volumeInfo.title && book.volumeInfo.author) {
 		// console.log(event);
 		// console.log(book.id);
@@ -37,27 +37,30 @@ const bookAuthors = (authors) => {
 		// console.log(book.volumeInfo.infoLink);
 		// console.log("-----------------------");
 
-		// API.saveBook({
-		// 	id: event,
-		// 	// title: book.volumeInfo.title,
-		// 	// authors: bookAuthors(book.volumeInfo.authors),
-		// 	// description: book.volumeInfo.description,
-		// 	// image: urlA + book.id + urlB,
-		// 	// link: book.volumeInfo.infoLink
+		API.saveBook({
+	 
+			title: book.volumeInfo.title,
+			authors: book.volumeInfo.authors,
+			description: book.volumeInfo.description,
+			image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482930.jpg",
+			link: book.volumeInfo.infoLink
 
-		// // })
-		// .then(console.log("then in HandleSave"))
-		// 	// .then(res => loadBooks())
-		// 	.catch(err => console.log(err));
-	// }
+		})
+		.then(results => {
+			console.log(results);
+		})
+			// .then(res => loadBooks())
+			.catch(err => console.log(err));
+	
 };
 
 const Book = ({ book }) => {
+	console.log(book);
   return (
 		<div>
 			<div className='row' key={book.id}>
 				<div className='col'>{book.volumeInfo.title}
-				<button onClick={handleSave({book})} className="save">Save</button>
+				<button onClick={()=>handleSave(book)} className="save">Save</button>
 				{/* <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
       {props.children}
     </button> */}
@@ -68,7 +71,7 @@ const Book = ({ book }) => {
 					{/* </button> */}
 					{/* <button onClick{...() => book.viewBook(book.id)} className='view'>View</button> */}
 					<button>
-						<a className="btn view" href={linkurl + book.id} target="_blank">
+						<a className="btn view" href={book.volumeInfo.infoLink} target="_blank">
 							View
 						</a>
 					</button>
@@ -83,7 +86,7 @@ const Book = ({ book }) => {
 			<div className='row'>
 				<div className='col img-fluid'>
 					<img alt={`${book.volumeInfo.title} book`}
-					src={imageurlA + book.id + imageurlB} />
+					src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482930.jpg"} />
 					<span className="text">{book.volumeInfo.description}</span>
 				</div>
 			</div>
