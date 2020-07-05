@@ -66,7 +66,7 @@ function Search() {
       error={error}
     />
 			<Loader searchTerm={searchTerm} loading={loading}/>
-			<BooksList books={books} />
+			<BooksList books={books} page="search" />
 			</div>
 	);
 }

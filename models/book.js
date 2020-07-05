@@ -8,22 +8,22 @@ const BookSchema = new Schema({
   },
 
   authors: {
-    type: Array,
+    type: Array
   },
 
 	description: {
     type: String,
-    trim: true,
+    trim: true
 	},
 
 	image: {
     type: String,
-    trim: true,
+    trim: true
 	},
 
 	link: {
     type: String,
-    trim: true,
+    trim: true
 	}
 });
 

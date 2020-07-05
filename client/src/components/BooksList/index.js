@@ -26,17 +26,7 @@ const bookAuthors = (authors) => {
 }
 
  function handleSave(book) {
-	 	// event.preventDefault();
 	console.log(book);
-	// if (book.volumeInfo.title && book.volumeInfo.author) {
-		// console.log(event);
-		// console.log(book.id);
-		// console.log(book.volumeInfo.title);
-		// console.log(bookAuthors(book.volumeInfo.authors));
-		// console.log(urlA + book.id + urlB);
-		// console.log(book.volumeInfo.infoLink);
-		// console.log("-----------------------");
-
 		API.saveBook({
 	 
 			title: book.volumeInfo.title,
@@ -49,17 +39,16 @@ const bookAuthors = (authors) => {
 		.then(results => {
 			console.log(results);
 		})
-			// .then(res => loadBooks())
 			.catch(err => console.log(err));
 	
 };
 
-const Book = ({ book }) => {
+const Book = ({ book, page }) => {
 	console.log(book);
   return (
 		<div>
 			<div className='row' key={book.id}>
-				<div className='col'>{book.volumeInfo.title}
+				<div className='col'>{ page==="search" ?  book.volumeInfo.title : book.title }
 				<button onClick={()=>handleSave(book)} className="save">Save</button>
 				{/* <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
       {props.children}
@@ -86,6 +75,7 @@ const Book = ({ book }) => {
 			<div className='row'>
 				<div className='col img-fluid'>
 					<img alt={`${book.volumeInfo.title} book`}
+					// src={book.volumeInfo.imageLinks.thumbnail} />
 					src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482930.jpg"} />
 					<span className="text">{book.volumeInfo.description}</span>
 				</div>
@@ -93,11 +83,11 @@ const Book = ({ book }) => {
 		</div>
   )
 };
-const BooksList = ({ books }) => {
+const BooksList = ({ books, page }) => {
   return (
     <ul>
       {books.items.map((book, index) => {
-        return <Book book={book} key={index} />;
+        return <Book book={book}  page={page} key={index} />;
       })}
     </ul>
   );
