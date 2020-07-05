@@ -59,14 +59,17 @@ function Search() {
 
 	return (
 		<div>
-			<BookSearchForm
-      onSubmitHandler={onSubmitHandler}
-      onInputChange={onInputChange}
-      searchTerm={searchTerm}
-      error={error}
-    />
-			<Loader searchTerm={searchTerm} loading={loading}/>
-			<BooksList books={books} page="search" />
+					<BookSearchForm
+					onSubmitHandler={onSubmitHandler}
+					onInputChange={onInputChange}
+					searchTerm={searchTerm}
+					error={error}
+					/>
+					<Loader searchTerm={searchTerm} loading={loading}/>
+					{books.totalItems != 0 ? (
+					<BooksList books={books} page="search" />
+						) : (
+					<h3>No Results to Display</h3>)}
 			</div>
 	);
 }
