@@ -48,10 +48,10 @@ function searchImages(book) {
 const Book = ({ book, page }) => {
 	console.log(book);
 	return (
-		<div className= "mg-5 border-bottom border-warning rounded-lg book">
+		<div className= "mg-5 border-bottom border-warning rounded-lg">
 			<div className="row" key={book.id}>
-				<div className="col">
-				<span className="title">{page === "search" ? book.volumeInfo.title : book.title}</span>
+				<div className="col title ">
+					{book.volumeInfo.title}
 					<button type="button" onClick={() => handleSave(book)} className="btn btn-warning save">
 					{page === "search" ? "Save" : "Delete"}
 					</button>

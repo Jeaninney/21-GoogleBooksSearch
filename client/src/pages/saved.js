@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Saved() {
@@ -31,7 +30,7 @@ function Saved() {
 	return (
 		<Container fluid>
 			<Jumbotron>
-				<h1> My Saved Books</h1>
+				<h1>My Saved Books</h1>
 			</Jumbotron>
 
 			
@@ -39,16 +38,16 @@ function Saved() {
             books.map(book => (
               <div className="outer" key={book._id}>
               <Row>  
-              <Col size="md-4" key={book._id}>
+              <Col size="md-6" key={book._id}>
                 {book.title}
               </Col>
               <Col size="md-6">
-                 <button type= "button" onClick={() => deleteBook(book._id)} className="delete btn btn-danger">Delete</button>
-                 <button className="view btn btn-secondary"><a href={book.link} styletarget="_blank" rel="noopener noreferrer" >View</a></button>
+                 <button onClick={() => deleteBook(book._id)} className="delete btn btn-danger">Delete</button>
+                 <button className="btn btn-secondary"><a href={book.link} styletarget="_blank" rel="noopener noreferrer" className="view">View</a></button>
                </Col>
               </Row>
               <Row>
-                <Col size="md-6">{book.author}</Col>
+                <Col size="md-6">{book.authors}</Col>
               </Row> 
               <Row>
                 <Col size="md-3">
