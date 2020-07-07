@@ -9,7 +9,7 @@ const BookSearchForm = ({
 }) => {
   return (
     <form className="form-group row" onSubmit={onSubmitHandler}>
-      <label for="inputSearch" className="col-sm-2 col-form-label">
+      <label className="col-sm-2 col-form-label">
         <span>Search for books by name or author</span>
 				</label>
         <input
