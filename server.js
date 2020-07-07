@@ -1,17 +1,21 @@
 const express = require("express");
 const path = require("path");
-
+const routes = require("./routes");
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user:password1@ds149875.mlab.com:49875/heroku_8tpwhv0d", { useNewUrlParser: true });
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true });
+// const PORT = process.env.PORT || 3001;
+// const app = express();
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const routes = require("./routes");
+
 app.use(routes);
 
 // Serve up static assets (usually on heroku)
