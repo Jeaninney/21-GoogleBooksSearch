@@ -9,12 +9,12 @@ const BookSearchForm = ({
 }) => {
   return (
     <form className="form-group row" onSubmit={onSubmitHandler}>
-      <label className="col-sm-2 col-form-label">
+      <label className="col col-form-label">
         <span>Search for books by name or author</span>
 				</label>
         <input
           type="search"
-          placeholder="microservice, restful design, etc.,"
+          placeholder="enter here"
           value={searchTerm}
           onChange={onInputChange}
           required

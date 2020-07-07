@@ -2,10 +2,6 @@ import React from "react";
 import API from "../../utils/API";
 import "./style.css";
 
-const imageurlA = "https://books.google.com/books/content?id=";
-const imageurlB = "&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api";
-const linkurl = "https://www.google.com/books/edition/_/";
-
 // Separate the UI specific transforming logic to utils folder
 //import { bookAuthors } from '../utils';
 const bookAuthors = (authors) => {
@@ -52,10 +48,10 @@ function searchImages(book) {
 const Book = ({ book, page }) => {
 	console.log(book);
 	return (
-		<div className= "mg-5 border-bottom border-warning rounded-lg">
+		<div className= "mg-5 border-bottom border-warning rounded-lg book">
 			<div className="row" key={book.id}>
-				<div className="col title ">
-					
+				<div className="col">
+				<span className="title">{page === "search" ? book.volumeInfo.title : book.title}</span>
 					<button type="button" onClick={() => handleSave(book)} className="btn btn-warning save">
 					{page === "search" ? "Save" : "Delete"}
 					</button>
@@ -63,6 +59,7 @@ const Book = ({ book, page }) => {
 						<a
 							href={book.volumeInfo.infoLink}
 							target="_blank"
+							rel="noopener noreferrer"
 						>
 							View
 						</a>
