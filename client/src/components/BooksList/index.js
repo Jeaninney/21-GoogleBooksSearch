@@ -1,6 +1,5 @@
 import React from "react";
 import API from "../../utils/API";
-// import API from "../utils/API";
 import "./style.css";
 
 const imageurlA = "https://books.google.com/books/content?id=";
@@ -42,28 +41,26 @@ function handleSave(book) {
 		.catch((err) => console.log(err));
 }
 
+function searchImages(book) {
+	if (book.volumeInfo.imageLinks) {
+		return book.volumeInfo.imageLinks.thumbnail
+	}
+		return "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482930.jpg"
+}
+
+
 const Book = ({ book, page }) => {
 	console.log(book);
 	return (
-		<div>
+		<div className= "mg-5 border-bottom border-warning rounded-lg">
 			<div className="row" key={book.id}>
-				<div className="col">
-					{page === "search" ? book.volumeInfo.title : book.title}
-					<button onClick={() => handleSave(book)} className="save">
-						Save
+				<div className="col title ">
+					
+					<button type="button" onClick={() => handleSave(book)} className="btn btn-warning save">
+					{page === "search" ? "Save" : "Delete"}
 					</button>
-					{/* <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
-      {props.children}
-    </button> */}
-					{/* <a className=" btn save" href={book.volumeInfo.infoLink} target="_blank">
-							Save
-						</a>
-						 {/* onClick{...() => book.saveBook(book.id)} className='save'>Save */}
-					{/* </button> */}
-					{/* <button onClick{...() => book.viewBook(book.id)} className='view'>View</button> */}
-					<button>
+					<button type="button" className="btn btn-secondary view" >
 						<a
-							className="btn view"
 							href={book.volumeInfo.infoLink}
 							target="_blank"
 						>
@@ -73,23 +70,20 @@ const Book = ({ book, page }) => {
 				</div>
 			</div>
 			<div className="row">
-				<div className="col">{book.volumeInfo.publishedDate}</div>
+				<div className="col">
+				{page === "search" ? bookAuthors(book.volumeInfo.authors) : book.authors}
+				</div>
 			</div>
 			<div className="row">
-				<div className="col">{bookAuthors(book.volumeInfo.authors)}</div>
+				<div className="col">{page === "search" ? book.volumeInfo.publishedDate : ""}</div>
 			</div>
 			<div className="row">
 				<div className="col img-fluid">
-					<img
-						alt={`${book.volumeInfo.title} book`}
-						// src={book.volumeInfo.imageLinks.thumbnail} />
-						src={
-							book.volumeInfo.imageLinks
-								? book.volumeInfo.imageLinks.thumbnail
-								: "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482930.jpg"
-						}
+					<img 
+						alt={page === "search" ? book.volumeInfo.title : book.title}
+						src={ page === "search" ? searchImages(book) : book.image }
 					/>
-					<span className="text">{book.volumeInfo.description}</span>
+					<span className="text">{page === "search" ? book.volumeInfo.description : book.description}</span>
 				</div>
 			</div>
 		</div>

@@ -8,9 +8,10 @@ const BookSearchForm = ({
   error,
 }) => {
   return (
-    <form onSubmit={onSubmitHandler}>
-      <label>
-        <span>Search for books</span>
+    <form className="form-group row" onSubmit={onSubmitHandler}>
+      <label for="inputSearch" className="col-sm-2 col-form-label">
+        <span>Search for books by name or author</span>
+				</label>
         <input
           type="search"
           placeholder="microservice, restful design, etc.,"
@@ -18,8 +19,8 @@ const BookSearchForm = ({
           onChange={onInputChange}
           required
         />
-        <button type="submit">Search</button>
-      </label>
+        <button type="submit" className="btn btn-warning">Search</button>
+      
       {error && (
         <div style={{ color: `red` }}>
           some error occurred, while fetching api
